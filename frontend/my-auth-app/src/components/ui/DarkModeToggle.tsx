@@ -21,7 +21,7 @@ export const DarkModeToggle = () => {
   return (
     <button
       onClick={() => setIsDarkMode(!isDarkMode)}
-      className="absolute top-5 right-5 text-2xl mt-6 bg-slate-300 p-1 rounded-2xl dark:bg-slate-700 text-yellow-500 dark:text-white transition"
+      className="absolute top-5 right-5 text-2xl mt-5 bg-slate-300 p-2 rounded-full dark:bg-slate-700 text-yellow-500 dark:text-white transition"
       aria-label="Toggle Dark Mode"
     >
       <AnimatePresence mode="wait" initial={false}>
