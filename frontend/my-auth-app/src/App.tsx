@@ -45,7 +45,7 @@ const App = () => {
 
       {/* Contenu principal centré */}
     <center>
-    <motion.div 
+    <motion.div
     	initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						transition={{ duration: 2 }}className="mt-12 transition-all duration-500 text-black dark:text-white p-8 w-full">

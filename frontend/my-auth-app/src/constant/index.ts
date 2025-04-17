@@ -1,24 +1,45 @@
-import slide1 from '../assets/coach.png'
-import slide2 from '../assets/logogrand.png'
+import slide2 from '../assets/main-robot-touchant-main-humaine_23-2151015279-removebg-preview.png'
+import slide1 from '../assets/logogrand.png'
 import slide3 from '../assets/logopetit.png'
 
-export const slides = [
+export const slidesLogin = [
   {
     id: 1,
-    content: 'Slide 1: Hello 👋',
-    bg: 'bg-pink-500',
+    content: 'Bonjour 👋 Bienvenue sur Tsinjool, un plateforme de coaching en ligne alimentée par l\'IA',
+    bg: 'transparent',
     image: slide1
   },
   {
     id: 2,
-    content: 'Slide 2: Bonjour 🌍',
-    bg: 'bg-blue-500',
+    content: 'Nous vous accompagnons tout au long de votre parcours 🤖',
+    bg: 'transparent',
     image: slide2
   },
   {
     id: 3,
     content: 'Slide 3: Hola 🌞',
-    bg: 'bg-purple-500',
+    bg: 'transparent',
+    image: slide3
+  },
+];
+
+export const slidesRegister = [
+  {
+    id: 1,
+    content: 'Bonjour 👋 Bienvenue sur Tsinjool, un plateforme de coaching en ligne alimentée par l\'IA',
+    bg: 'transparent',
+    image: slide1
+  },
+  {
+    id: 2,
+    content: 'Nous vous accompagnons tout au long de votre parcours 🤖',
+    bg: 'transparent',
+    image: slide2
+  },
+  {
+    id: 3,
+    content: 'Slide 3: Hola 🌞',
+    bg: 'transparent',
     image: slide3
   },
 ];

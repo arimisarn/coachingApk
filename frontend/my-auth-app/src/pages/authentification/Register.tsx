@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { slides } from '../../constant';
+import { slidesRegister } from '../../constant';
 
 
 
@@ -20,8 +20,8 @@ function Register() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+      setIndex((prev) => (prev + 1) % slidesRegister.length);
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
@@ -61,21 +61,25 @@ function Register() {
       />
 
       {/* Carousel */}
-      <div className="w-1/2 h-[400px] flex items-center justify-center">
-        <div className="relative w-[80%] h-full overflow-hidden rounded-xl shadow-xl">
+      <div className="w-1/2 h-[400px] flex flex-wrap items-center justify-center">
+        <div className="relative w-[80%] h-full overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
-              key={slides[index].id}
+              key={slidesRegister[index].id}
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.6 }}
-              className={`absolute inset-0 flex items-center justify-center text-white text-2xl font-semibold ${slides[index].bg}`}
+              className={`absolute inset-0 text-white text-2xl font-semibold ${slidesRegister[index].bg}`}
             >
-              <img src={slides[index].image} alt={slides[index].content} className="w-48 h-48 object-cover rounded-lg mb-4 shadow-lg" />
-             <p className="text-xl font-semibold">
-              {slides[index].content}
+              <div className='flex justify-center items-center '>
+              <img src={slidesRegister[index].image} alt={slidesRegister[index].content} className="w-48 h-48 object-cover mt-16 mb-4 " />
+              </div>
+              <div className='flex justify-center items-center text-center'>
+             <p className="text-xl text-black dark:text-white font-semibold">
+              {slidesRegister[index].content}
               </p> 
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -144,7 +148,7 @@ function Register() {
               )}
             </button>
           </form>
-          <p className='mt-3 text-md font-[Arial]'>Vous avez déja un compte? </p>
+          <p className='mt-3 text-md font-[Arial] text-black dark:text-white'>Vous avez déja un compte? </p>
           <Link to="/login" className='underline text-green-600 hover:font-semibold transition-all duration-500 hover:text-md'> Se connecter maitenant</Link>
         </motion.div>
       </div>

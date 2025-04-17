@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { motion,AnimatePresence } from 'framer-motion';
-import { slides } from '../../constant';
+import { slidesLogin } from '../../constant';
 import { Link } from 'react-router-dom';
 
 function Login() {
@@ -41,7 +41,7 @@ function Login() {
 
     useEffect(() => {
       const interval = setInterval(() => {
-        setIndex((prev) => (prev + 1) % slides.length);
+        setIndex((prev) => (prev + 1) % slidesLogin.length);
       }, 5000);
       return () => clearInterval(interval);
     }, []);
@@ -54,26 +54,31 @@ function Login() {
         [background:radial-gradient(125%_125%_at_50%_10%,theme(colors.white)_40%,#63e_100%)]
         dark:[background:radial-gradient(125%_125%_at_50%_10%,theme(colors.black)_40%,#63e_100%)]"
       />
-       {/* Carousel */}
-       <div className="w-1/2 h-[400px] flex items-center justify-center">
-        <div className="relative w-[80%] h-full overflow-hidden rounded-xl shadow-xl">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={slides[index].id}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.6 }}
-              className={`absolute inset-0 flex items-center justify-center text-white text-2xl font-semibold ${slides[index].bg}`}
-            >
-              <img src={slides[index].image} alt={slides[index].content} className="w-48 h-48 object-cover rounded-lg mb-4 shadow-lg" />
-             <p className="text-xl font-semibold">
-              {slides[index].content}
-              </p> 
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
+        {/* Carousel */}
+             <div className="w-1/2 h-[400px] flex flex-wrap items-center justify-center">
+               <div className="relative w-[80%] h-full overflow-hidden">
+                 <AnimatePresence mode="wait">
+                   <motion.div
+                     key={slidesLogin[index].id}
+                     initial={{ opacity: 0, x: 100 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     exit={{ opacity: 0, x: -100 }}
+                     transition={{ duration: 0.6 }}
+                     className={`absolute inset-0 text-white text-2xl font-semibold ${slidesLogin[index].bg}`}
+                   >
+                     <div className='flex justify-center items-center '>
+                     <img src={slidesLogin[index].image} alt={slidesLogin[index].content} className="w-48 h-48 object-cover mt-16 mb-4 " />
+                     </div>
+                     <div className='flex justify-center items-center text-center'>
+                    <p className="text-xl text-black dark:text-white font-semibold">
+                     {slidesLogin[index].content}
+                     </p> 
+                     </div>
+                   </motion.div>
+                 </AnimatePresence>
+               </div>
+             </div>
+       
       <motion.div
         className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full dark:bg-zinc-900"
         animate={shake ? { x: [-10, 10, -10, 10, 0] } : {}}
