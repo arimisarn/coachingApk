@@ -71,7 +71,7 @@ const SideBar = () => {
     {id:1, name: "Se déconnecter", icon: FiLogOut},    
 ]
   return (
-    <div className="w-16 md:w-56 fixed rounded-t-md left-0 top-4 bottom-4 z-10 h-screen border-r dark:bg-zinc-800 pt-8 px-4 bg-white">
+    <div className="w-16 md:w-56 fixed rounded-t-md left-0 top-4 bottom-4 z-10 h-screen border-r border-white dark:border-zinc-600 dark:bg-zinc-800 pt-8 px-4 bg-white">
       <div className="mb-8 pb-2 border-b dark:border-zinc-700 ">
        <div className="hidden md:flex md:justify-center md:items-center">
         <div>

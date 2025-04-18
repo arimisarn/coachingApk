@@ -53,13 +53,13 @@ const data = [
 const ActivityGraph = () => {
   return (
     <div className="col-span-12 overflow-hidden rounded
-    border border-stone-300 w-full">
+    border border-stone-300 w-full dark:border-zinc-600">
       <div className="p-4">
-        <h3 className="flex items-center gap-1.5 font-medium">
-        <FiUser /> Activité journalière
+        <h3 className="flex items-center gap-1.5 font-medium text-black dark:text-white">
+        <FiUser /> Progression journalière
         </h3>
       </div>
-      <ResponsiveContainer className="mt-5" width="100%" height="80%">
+      <ResponsiveContainer className="mt-5 text-white"  width="100%" height="80%">
         <LineChart
           width={500}
           height={300}
@@ -72,7 +72,7 @@ const ActivityGraph = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis stroke="#71717a" dataKey="name" />
           <YAxis 
   domain={[0, 100]} 
   tickCount={11} 
@@ -81,7 +81,7 @@ const ActivityGraph = () => {
 />
           <Tooltip />
           <Legend />
-          <Line type="bump"dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="bump" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
           <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
         </LineChart>
       </ResponsiveContainer>

@@ -55,10 +55,10 @@ const data = [
 const ActivityGraphBar = () => {
   return (
      <div className="col-span-12 overflow-hidden rounded
-       border border-stone-300 w-full">
+       border border-stone-300 w-full dark:border-zinc-600">
          <div className="p-4">
-           <h3 className="flex items-center gap-1.5 font-medium">
-           <FiUser /> Activité mensuelle
+           <h3 className="flex items-center gap-1.5 font-medium text-black dark:text-white">
+           <FiUser /> Progression mensuelle
            </h3>
          </div>
          <ResponsiveContainer className="mt-5" width="100%" height="80%">

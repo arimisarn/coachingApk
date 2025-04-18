@@ -124,7 +124,7 @@ const Messages = () => {
       {/* Input et bouton d'envoi */}
       <div className="flex">
         <input
-          className="flex-1 p-2 border rounded outline-none dark:bg-gray-800 dark:text-white border-gray-500 bg-white text-black border-gray-300"
+          className="flex-1 p-2 border rounded outline-none dark:bg-zinc-700 dark:text-white dark:border-gray-500 bg-white text-black border-gray-300"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}

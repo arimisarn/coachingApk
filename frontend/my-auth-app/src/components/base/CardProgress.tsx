@@ -41,11 +41,11 @@ const Carte = ({
     trend: "up" | "down";
     period: string;
 }) =>{
-    return <div className="mt-5 flex flex-wrap col-span-4 p-4 rounded border border-stone-300">
+    return <div className="mt-5 flex flex-wrap col-span-4 p-4 rounded border border-stone-300 dark:border-zinc-600">
         <div className="flex flex-wrap mb-8 items-start justify-between">
             <div>
-                  <p className="text-stone-500 mb-2 text-sm md:text-base">{titre}</p>
-                  <p className="text-sm md:text-lg font-semibold">{value}</p>
+                  <p className="text-stone-500 dark:text-stone-300 mr-4 mb-2 text-sm md:text-base">{titre}</p>
+                  <p className="text-sm md:text-lg text-black dark:text-white font-semibold">{value}</p>
             </div>
             <div>
             <span className={`text-xs flex items-center gap-1 font-medium px-2 py-1 rounded ${
@@ -58,7 +58,7 @@ const Carte = ({
             </span>
             </div>
         </div>
-        <p className="text-xs text-stone-500">{period}</p>
+        <p className="text-xs text-stone-500 dark:text-stone-300">{period}</p>
     </div>
 }
 
