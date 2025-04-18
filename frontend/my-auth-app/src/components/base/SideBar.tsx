@@ -71,8 +71,8 @@ const SideBar = () => {
     {id:1, name: "Se déconnecter", icon: FiLogOut},    
 ]
   return (
-    <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white">
-      <div className="mb-8 pb-2 border-b">
+    <div className="w-16 md:w-56 fixed rounded-t-md left-0 top-4 bottom-4 z-10 h-screen border-r dark:bg-zinc-800 pt-8 px-4 bg-white">
+      <div className="mb-8 pb-2 border-b dark:border-zinc-700 ">
        <div className="hidden md:flex md:justify-center md:items-center">
         <div>
         <img src={logoPetit} className="w-[50px] h-[50px]" alt="" />
@@ -89,15 +89,15 @@ const SideBar = () => {
       <ul className="mt-2 space-y-2 text-sm">
         {
             SIDEBAR_LINKS.map((link, index) =>(
-                <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500 ${
-                    activeLink === index ? "bg-indigo-100" : ""
+                <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:text-indigo-500 ${
+                    activeLink === index ? "bg-indigo-100 dark:bg-zinc-700" : ""
                 }`}>
                     <Link 
                         to={link.path} 
                         className="flex items-center justify-center md:justify-start md:space-x-5"
                         onClick={() =>handleLinkClick(index)}>
                           
-                        <span>{link.icon()}</span>
+                        <span className="text-black dark:text-white">{link.icon()}</span>
                         <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
                     </Link>
                 </li>
@@ -109,15 +109,15 @@ const SideBar = () => {
       <ul className="mt-2 space-y-2 text-sm">
         {
             SIDEBAR_LINK.map((link, index) =>(
-                <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500 ${
-                    activeLink === index ? "bg-indigo-100" : ""
+                <li key={index} className={`font-medium rounded-md py-2 px-5 dark:hover:bg-zinc-700 hover:bg-gray-100 hover:text-indigo-500 ${
+                    activeLink === index ? "bg-indigo-100 dark:bg-zinc-800" : ""
                 }`}>
                     <Link 
                         to={link.path} 
                         className="flex items-center justify-center md:justify-start md:space-x-5"
                         onClick={() =>handleLinkClick(index)}>
                         
-                        <span>{link.icon()}</span>
+                        <span className="text-black dark:text-white">{link.icon()}</span>
                         <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
                     </Link>
                 </li>
@@ -127,14 +127,12 @@ const SideBar = () => {
       <ul className="mt-2 space-y-2 text-sm">
         {
             SIDEBAR_LINKe.map((link, index) =>(
-                <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500 ${
-                    activeLink === index ? "bg-indigo-100" : ""
-                }`}>
+                <li key={index} className="dark:hover:bg-zinc-700 font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500">
                     <button 
-                        className="flex items-center justify-center md:justify-start md:space-x-5"
+                        className=" flex items-center justify-center md:justify-start md:space-x-5"
                         onClick={handleLogout}>
                         
-                        <span>{link.icon()}</span>
+                        <span className="text-black dark:text-white">{link.icon()}</span>
                         <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
                     </button>
                 </li>

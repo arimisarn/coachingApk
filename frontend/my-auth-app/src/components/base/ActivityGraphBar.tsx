@@ -4,75 +4,51 @@ import { FiUser } from 'react-icons/fi';
 const data = [
     {
       name: 'Janvier',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      ExerciceEffectué: 200,
     },  
     {
       name: 'Fevrier',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      ExerciceEffectué: 3000,
     },
     {
       name: 'Mars',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+      ExerciceEffectué: 2000,
     },
     {
       name: 'Avril',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
+      ExerciceEffectué: 2780,
     },
     {
       name: 'Mai',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
+      ExerciceEffectué: 1890,
     },
     {
       name: 'Juin',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
+      ExerciceEffectué: 2390,
     },
     {
       name: 'Juillet',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
+      ExerciceEffectué: 3490,
     },
     {
         name: 'Août',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
+        ExerciceEffectué: 2000,
       },
       {
         name: 'Septembre',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
+        ExerciceEffectué: 2780,
       },
       {
         name: 'Octobre',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
+        ExerciceEffectué: 1890,
       },
       {
         name: 'Novembre',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
+        ExerciceEffectué: 2390,
       },
       {
         name: 'Décembre',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
+        ExerciceEffectué: 3490,
       },
   ];
 
@@ -97,17 +73,16 @@ const ActivityGraphBar = () => {
             bottom: 5,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid />
           <XAxis dataKey="name" />
           <YAxis 
-  domain={[0, 100]} 
-  tickCount={11} 
+  domain={[0, 0]} 
+  tickCount={12} 
   interval={0} 
-  tickFormatter={(value) => value / 100} 
+  tickFormatter={(value) => value} 
 />          <Tooltip />
           <Legend />
-          <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-          <Bar dataKey="uv" fill="#82ca9d" activeBar={<Rectangle fill="gold" stroke="purple" />} />
+          <Bar className='bg-indigo-400' dataKey="ExerciceEffectué" fill="#8884d8" activeBar={<Rectangle fill="#a5b4fc" stroke="blue" />} />
         </BarChart>
       </ResponsiveContainer>
        </div>

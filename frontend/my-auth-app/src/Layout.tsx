@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-50 dark:bg-slate-400">
       <div className="flex">
       <SideBar/>
       </div>
-      <div className="shadow-2xl ml-20 md:ml-56 bg-white rounded-lg mr-4 m-4">
+      <div className="ml-20 md:ml-56 rounded-lg mr-4 m-4">
       <Header/>
       <Outlet />
       </div>

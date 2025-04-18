@@ -5,6 +5,7 @@ import { FiSearch, FiCommand } from "react-icons/fi";
 import { BiCalendar } from "react-icons/bi";
 import { motion } from "framer-motion";
 import ImageToggled from "./ImageToggled";
+import { DarkModeToggleDash } from "../ui/DarkModeToggleDash";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -75,10 +76,10 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="border-b flex justify-between items-center p-4 relative">
+    <div className="transition-all duration-500 shadow-teal-200 rounded-t-xl dark:bg-zinc-800 border-b flex justify-between items-center p-4 relative">
       {/* Informations de la date et de l'emplacement */}
       <div>
-        <div className="flex items-center text-xs text-stone-500">
+         <div className="flex items-center text-xs text-stone-500 dark:text-white">
           <div className="flex justify-around items-center">
             <div className="pr-2">
               <BiCalendar />
@@ -86,6 +87,7 @@ const Header: React.FC = () => {
             <div>{ordreDate}</div>
           </div>
         </div>
+
       </div>
 
       {/* Barre de recherche */}
@@ -96,7 +98,7 @@ const Header: React.FC = () => {
           placeholder="Rechercher ..."
           className="bg-transparent placeholder:text-stone-500 focus:outline-none"
         />
-        <span className="p-1 text-xs flex gap-0.5 items-center shadow bg-stone-50 rounded absolute right-1.5 top-1/2 -translate-y-1/2">
+        <span className="p-1 text-xs flex gap-0.5 items-center shadow dark:bg-zinc-800 text-black dark:text-white bg-stone-50 rounded absolute right-1.5 top-1/2 -translate-y-1/2">
           <FiCommand />
           K
         </span>
@@ -112,11 +114,11 @@ const Header: React.FC = () => {
           </span>
         </div>
       </div>
-
       {/* Bouton et notifications */}
       <div className="flex items-center space-x-5">
+      <DarkModeToggleDash />
         <button
-          className="relative text-2xl text-gray-600"
+          className="relative text-2xl text-gray-600 dark:text-stone-300"
           onClick={toggleNotification}
         >
           {isNotificationOpen ? (
@@ -125,7 +127,7 @@ const Header: React.FC = () => {
             <GoBell size={22} />
           )}
           <span
-            className={`absolute top-0 right-0 -mt-1 -mr-2 flex justify-center items-center bg-indigo-600 text-white font-semibold text-[10px] w-5 h-4 rounded-full border-2 border-white ${
+            className={`absolute top-0 right-0 -mt-1 -mr-2 flex justify-center items-center bg-indigo-600 text-white font-semibold text-[10px] w-5 h-4 rounded-full border-2 dark:border-zinc-900 border-white ${
               isNotificationOpen ? "hidden" : "block"
             }`}
           >
@@ -157,7 +159,7 @@ const Header: React.FC = () => {
         <motion.img
           onClick={toggleProfile}
           src={pic}
-          className="w-8 h-8 rounded-full border-2 cursor-pointer"
+          className="w-8 h-8 rounded-full border-2 border-zinc-500 dark:border-zinc-100 cursor-pointer "
           alt="Profil utilisateur"
           whileHover={{ scale: 1.1 }}
         />

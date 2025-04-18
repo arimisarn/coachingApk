@@ -54,24 +54,11 @@ const Messages = () => {
       };
 
 
-
-      const mess = "Salut" +username
-      console.log(mess)
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: mess + username },
+    { role: "assistant", content: "Bonjour que puis-je faire pour vous?" },
   ]);
   const [input, setInput] = useState("");
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
-
-  // Gestion du mode sombre
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
 
   const handleSend = () => {
     if (input.trim()) {
@@ -95,20 +82,7 @@ const Messages = () => {
    
 
   return (
-    <div className={`flex flex-col w-full h-[80vh] rounded shadow-md p-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"} transition duration-300`}>
-      {/* Bouton pour changer de mode (Lune/Soleil) à côté de la notification */}
-      <div className="flex justify-end items-center space-x-5 mb-2">
-        {/* Bouton mode sombre/clair */}
-        <motion.button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="text-xl text-gray-600 dark:text-gray-300 p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition duration-300"
-        >
-          {isDarkMode ? <BsSun className="text-yellow-500" /> : <BsMoon className="text-blue-500" />}
-        </motion.button>
-      </div>
-
+    <div className="flex flex-col w-full h-[85vh] overflow-y-hidden pb-2 rounded shadow-md p-4 dark:bg-zinc-800 dark:text-white bg-gray-100 text-black transition duration-300">
       {/* Conteneur des messages */}
       <div className="flex-1 flex flex-col overflow-y-auto mb-4">
         {messages.map((msg, index) => (
@@ -150,7 +124,7 @@ const Messages = () => {
       {/* Input et bouton d'envoi */}
       <div className="flex">
         <input
-          className={`flex-1 p-2 border rounded outline-none ${isDarkMode ? "bg-gray-800 text-white border-gray-500" : "bg-white text-black border-gray-300"}`}
+          className="flex-1 p-2 border rounded outline-none dark:bg-gray-800 dark:text-white border-gray-500 bg-white text-black border-gray-300"
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -159,7 +133,7 @@ const Messages = () => {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className={`ml-2 px-4 py-2 ${isDarkMode ? "bg-indigo-600" : "bg-indigo-500"} text-white rounded hover:bg-blue-600 transition`}
+          className="ml-2 px-4 py-2 dark:bg-indigo-600 bg-indigo-500 text-white rounded hover:bg-blue-600 transition"
           onClick={handleSend}
           type="submit"
         >

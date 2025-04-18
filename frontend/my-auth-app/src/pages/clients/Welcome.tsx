@@ -44,7 +44,10 @@ function Welcome() {
   };
 
   return (
-      <div className="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
+      <div className="absolute inset-0 -z-10 h-full w-full transition-all duration-500
+      bg-white dark:bg-black
+      [background:radial-gradient(125%_125%_at_50%_10%,theme(colors.white)_40%,#63e_100%)]
+      dark:[background:radial-gradient(125%_125%_at_50%_10%,theme(colors.black)_40%,#63e_100%)]"  >
       <div className="bg-white/30 backdrop-blur-md rounded-lg shadow-lg p-8 max-w-sm w-full text-center text-white">
         <h1 className="text-2xl font-semibold mb-4">Bienvenue, {username}!</h1>
         <button
