@@ -76,7 +76,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <div className="transition-all duration-500 shadow-teal-200 rounded-t-xl dark:bg-zinc-800 border-b flex justify-between items-center p-4 relative">
+    <div className="transition-all duration-500 rounded-t-xl dark:bg-zinc-800 border-b dark:border-zinc-600 flex justify-between items-center p-4 relative">
       {/* Informations de la date et de l'emplacement */}
       <div>
          <div className="flex items-center text-xs text-stone-500 dark:text-white">
@@ -127,7 +127,7 @@ const Header: React.FC = () => {
             <GoBell size={22} />
           )}
           <span
-            className={`absolute top-0 right-0 -mt-1 -mr-2 flex justify-center items-center bg-indigo-600 text-white font-semibold text-[10px] w-5 h-4 rounded-full border-2 dark:border-zinc-900 border-white ${
+            className={`absolute top-0 right-0 -mt-1 -mr-2 flex justify-center items-center bg-indigo-600 text-white font-semibold text-[10px] w-5 h-4 rounded-full border-2 dark:border-zinc-800 border-white ${
               isNotificationOpen ? "hidden" : "block"
             }`}
           >

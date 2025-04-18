@@ -19,7 +19,7 @@ const Profile: React.FC<ProfileProps> = ({
   progress,
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 w-full">
+    <div className="bg-white dark:bg-zinc-800 shadow-lg p-6 w-full transition-all duration-500">
       {/* Photo de l'utilisateur */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
@@ -41,9 +41,9 @@ const Profile: React.FC<ProfileProps> = ({
         transition={{ duration: 0.5 }}
         className="text-center mt-4"
       >
-        <h1 className="text-xl font-bold text-indigo-600">{name}</h1>
+        <h1 className="text-xl font-bold text-indigo-600 dark:text-indigo-400">{name}</h1>
         <h2 className="text-sm text-gray-500">{role}</h2>
-        <p className="text-gray-700 mt-2">{bio}</p>
+        <p className="text-gray-700 mt-2 dark:text-stone-400">{bio}</p>
       </motion.div>
 
       {/* Objectifs */}
@@ -53,8 +53,8 @@ const Profile: React.FC<ProfileProps> = ({
         transition={{ duration: 0.6 }}
         className="mt-6"
       >
-        <h3 className="text-indigo-600 font-semibold mb-2">Objectifs :</h3>
-        <ul className="space-y-2 text-gray-700">
+        <h3 className="text-indigo-600 dark:text-indigo-400 font-semibold mb-2">Objectifs :</h3>
+        <ul className="space-y-2 text-gray-700 dark:text-stone-500">
           {goals.map((goal, index) => (
             <li key={index}>✅ {goal}</li>
           ))}
@@ -68,8 +68,8 @@ const Profile: React.FC<ProfileProps> = ({
         transition={{ duration: 0.7 }}
         className="mt-6"
       >
-        <h3 className="text-indigo-600 font-semibold mb-2">Progrès :</h3>
-        <div className="w-full bg-gray-200 rounded-full">
+        <h3 className="text-indigo-600 font-semibold mb-2 dark:text-indigo-400">Progrès :</h3>
+        <div className="w-full bg-gray-200 dark:bg-zinc-600 rounded-full">
           <div
             className="bg-indigo-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
             style={{ width: `${progress}%` }}
