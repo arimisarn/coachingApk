@@ -1,14 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { ProfileProps } from "../../props/ProfileProps";
 
-interface ProfileProps {
-  name: string;
-  role: string;
-  bio: string;
-  avatar: string;
-  goals: string[];
-  progress: number;
-}
 
 const Profile: React.FC<ProfileProps> = ({
   name,

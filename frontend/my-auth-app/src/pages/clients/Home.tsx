@@ -1,42 +1,9 @@
 import ObjectifCard from "../../components/base/ObjectifCard"
-import SideBar from "../../components/base/SideBar"
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { objectifs } from "../../constant";
 import axios from 'axios';
-const objectifs = [
-  {
-    nom: "Exercice de relaxation",
-    type: "Web",
-    date: "2024-08-15",
-    members: ["Alice", "Bob", "Charlie"],
-    files: 4,
-    progression: 20,
-  },
-  {
-    nom: "Exercice de relaxation",
-    type: "Web",
-    date: "2024-08-15",
-    members: ["Alice", "Bob", "Charlie"],
-    files: 4,
-    progression: 20,
-  },
-  {
-    nom: "Exercice de relaxation",
-    type: "Web",
-    date: "2024-08-15",
-    members: ["Alice", "Bob", "Charlie"],
-    files: 4,
-    progression: 20,
-  },  
-  {
-    nom: "Exercice de relaxation",
-    type: "Web",
-    date: "2024-08-15",
-    members: ["Alice", "Bob", "Charlie"],
-    files: 4,
-    progression: 20,
-  }, 
-]
+
 const Home = () => {
   const [username, setUsername] = useState('');
     const navigate = useNavigate();

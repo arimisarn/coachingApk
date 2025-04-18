@@ -41,7 +41,10 @@ function Register() {
         setError("Ce nom d'utilisateur est déjà pris.");
       } else if (error.response?.data?.email) {
         setError("Cette adresse email est déjà utilisée.");
-      } else {
+      }
+      else if (error.response?.data?.password) {
+        setError("Utilisez un autre mot passe plus sécurisé.");
+      }  else {
         setError("Une erreur est survenue lors de l'inscription.");
       }
       setShake(true);
@@ -92,8 +95,18 @@ function Register() {
           animate={shake ? { x: [-10, 10, -10, 10, 0] } : {}}
           transition={{ duration: 0.4 }}
         >
-          <h2 className="text-2xl font-semibold text-center mb-4 text-zinc-800 dark:text-white">Inscription</h2>
-          {error && <p className="text-red-600 text-center mb-2">{error}</p>}
+          <motion.h2 
+           className="text-2xl font-semibold text-center mb-4 text-zinc-800 dark:text-white">Inscription</motion.h2>
+          {error && <motion.p 
+             initial={{ opacity: 0, y: -30 }}
+             animate={{
+               opacity: 1 ,
+               y: 0,
+               transition: { duration: 0.3 },
+             }}
+            
+          className="text-red-600 bg-red-300 p-2 rounded-lg
+           text-center mb-2">{error}</motion.p>}
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="email"

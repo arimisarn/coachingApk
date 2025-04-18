@@ -43,3 +43,40 @@ export const slidesRegister = [
     image: slide3
   },
 ];
+
+
+
+export const objectifs = [
+  {
+    nom: "Exercice de relaxation",
+    type: "Web",
+    date: "2024-08-15",
+    members: ["Alice", "Bob", "Charlie"],
+    files: 4,
+    progression: 0,
+  },
+  {
+    nom: "Exercice de relaxation",
+    type: "Web",
+    date: "2024-08-15",
+    members: ["Alice", "Bob", "Charlie"],
+    files: 4,
+    progression: 20,
+  },
+  {
+    nom: "Exercice de relaxation",
+    type: "Web",
+    date: "2024-08-15",
+    members: ["Alice", "Bob", "Charlie"],
+    files: 4,
+    progression: 20,
+  },  
+  {
+    nom: "Exercice de relaxation",
+    type: "Web",
+    date: "2024-08-15",
+    members: ["Alice", "Bob", "Charlie"],
+    files: 4,
+    progression: 20,
+  }, 
+]
