@@ -22,7 +22,7 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:8000/auth/token/login/', { username, password });
       localStorage.setItem('auth_token', response.data.auth_token);
-      navigate('/welcome');
+      navigate('/home');
     } catch (error: any) {
       if (error.response?.status === 400) {
         const detail = error.response?.data?.non_field_errors?.[0] || '';

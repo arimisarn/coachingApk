@@ -5,7 +5,7 @@ import slide3 from '../assets/logopetit.png'
 export const slidesLogin = [
   {
     id: 1,
-    content: 'Bonjour 👋 Bienvenue sur Tsinjool, un plateforme de coaching en ligne alimentée par l\'IA',
+    content: 'Bonjour 👋 Bon retour parmi nous. Explorez les coaching de Tsinjool',
     bg: 'transparent',
     image: slide1
   },

@@ -4,6 +4,8 @@ import { IoSend } from "react-icons/io5";
 import picture from '../../assets/a.jpeg.jpg'
 import { LuBot } from "react-icons/lu";
 import { BsMoon, BsSun } from "react-icons/bs"; // Icônes pour le mode sombre/clair
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 interface Message {
   role: "user" | "assistant";
@@ -11,8 +13,52 @@ interface Message {
 }
 
 const Messages = () => {
+  const [username, setUsername] = useState('');
+      const navigate = useNavigate();
+    
+      useEffect(() => {
+        const token = localStorage.getItem('auth_token');
+        if (!token) {
+          navigate('/login');
+          return;
+        }
+    
+        axios.get('http://localhost:8000/auth/users/me/', {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        })
+        .then((response) => setUsername(response.data.username))
+        .catch(() => {
+          // Si le token est invalide, on redirige vers login
+          localStorage.removeItem('auth_token');
+          navigate('/login');
+        });
+      }, [navigate]);
+    
+      const handleLogout = async () => {
+        const token = localStorage.getItem('auth_token');
+    
+        try {
+          await axios.post('http://localhost:8000/auth/token/logout/', {}, {
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          });
+    
+          localStorage.removeItem('auth_token');
+          navigate('/login');
+        } catch (error) {
+          console.error('Erreur lors de la déconnexion :', error);
+        }
+      };
+
+
+
+      const mess = "Salut" +username
+      console.log(mess)
   const [messages, setMessages] = useState<Message[]>([
-    { role: "assistant", content: "Bonjour, que puis-je faire pour vous?" },
+    { role: "assistant", content: mess + username },
   ]);
   const [input, setInput] = useState("");
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
@@ -44,6 +90,9 @@ const Messages = () => {
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+
+   
 
   return (
     <div className={`flex flex-col w-full h-[80vh] rounded shadow-md p-4 ${isDarkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-black"} transition duration-300`}>

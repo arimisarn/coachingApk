@@ -5,9 +5,51 @@ import { FaRobot } from "react-icons/fa"
 import logoPetit from "../../assets/logopetit.png"
 import logoGrand from "../../assets/logogrand.png"
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SideBar = () => {
+  const [username, setUsername] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('auth_token');
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+
+    axios.get('http://localhost:8000/auth/users/me/', {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    })
+    .then((response) => setUsername(response.data.username))
+    .catch(() => {
+      // Si le token est invalide, on redirige vers login
+      localStorage.removeItem('auth_token');
+      navigate('/login');
+    });
+  }, [navigate]);
+
+  const handleLogout = async () => {
+    const token = localStorage.getItem('auth_token');
+
+    try {
+      await axios.post('http://localhost:8000/auth/token/logout/', {}, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      localStorage.removeItem('auth_token');
+      navigate('/login');
+    } catch (error) {
+      console.error('Erreur lors de la déconnexion :', error);
+    }
+  };
+
       const [activeLink, setActiveLink] = useState(0)
       const handleLinkClick= (index) =>{
           setActiveLink(index)
@@ -24,8 +66,10 @@ const SideBar = () => {
 
     const SIDEBAR_LINK = [
       {id:1, path: "/parametre" , name: "Paramètres", icon: FiSettings},
-      {id:2, path: "/profil", name: "Se déconnecter", icon: FiLogOut},    
   ]
+  const SIDEBAR_LINKe = [
+    {id:1, name: "Se déconnecter", icon: FiLogOut},    
+]
   return (
     <div className="w-16 md:w-56 fixed left-0 top-0 z-10 h-screen border-r pt-8 px-4 bg-white">
       <div className="mb-8 pb-2 border-b">
@@ -80,7 +124,23 @@ const SideBar = () => {
             )) 
         }
       </ul>
-
+      <ul className="mt-2 space-y-2 text-sm">
+        {
+            SIDEBAR_LINKe.map((link, index) =>(
+                <li key={index} className={`font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500 ${
+                    activeLink === index ? "bg-indigo-100" : ""
+                }`}>
+                    <button 
+                        className="flex items-center justify-center md:justify-start md:space-x-5"
+                        onClick={handleLogout}>
+                        
+                        <span>{link.icon()}</span>
+                        <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
+                    </button>
+                </li>
+            )) 
+        }
+      </ul>
       </div>
     </div>
   )
