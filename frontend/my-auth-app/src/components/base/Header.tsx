@@ -148,11 +148,11 @@ const Header: React.FC = () => {
             transition: { duration: 0.3 },
           }}
           transition={{ duration: 0.3 }}
-          className={`absolute right-10 mt-20 bg-white shadow-md p-4 rounded-md ${
+          className={`absolute right-10 mt-20 bg-white dark:bg-zinc-600 shadow-md p-4 rounded-md ${
             isNotificationOpen ? "block" : "hidden"
           }`}
         >
-          <p className="text-black text-sm">Voici vos notifications ! 🎉</p>
+          <p className="text-black dark:text-white  text-sm">Voici vos notifications ! 🎉</p>
         </motion.div>
 
         {/* Image utilisateur et interaction */}

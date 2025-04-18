@@ -98,7 +98,7 @@ const SideBar = () => {
                         onClick={() =>handleLinkClick(index)}>
                           
                         <span className="text-black dark:text-white">{link.icon()}</span>
-                        <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
+                        <span className="transition-all dusration-500 text-sm text-gray-500 dark:text-gray-400 hidden md:flex">{link.name}</span>
                     </Link>
                 </li>
             )) 

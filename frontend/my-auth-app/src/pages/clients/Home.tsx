@@ -80,13 +80,10 @@ const Home = () => {
 
   return (
     <>
-     <div className="flex">
-      <SideBar/>
-      </div>
-    <div>
+    <div className="min-h-[100vh] flex dark:bg-zinc-800 bg-white">
   <div className="p-5">
     <div className="flex justify-between items-center">
-      <h1 className="text-lg font-semibold">
+      <h1 className="text-lg font-semibold dark:text-white">
         Objectifs
       </h1>
       <p className="text-sm underline text-indigo-600">Voir tout</p>

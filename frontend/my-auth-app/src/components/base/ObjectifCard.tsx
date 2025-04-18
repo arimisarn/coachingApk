@@ -2,12 +2,12 @@ import photo from '../../assets/a.jpeg.jpg'
 import { TiAttachment } from 'react-icons/ti'
 const ObjectifCard = ({objectif}) => {
   return (
-    <div className='p-6 rounded-xl border border-stone-300 space-y-5'>
+    <div className='p-6 rounded-xl border border-stone-300 dark:border-zinc-600 space-y-5'>
       <div>
-        <h1 className='text-xl font-semibold text-gray-700'>{objectif.nom}</h1>
-        <p className='text-sm text-gray-500'>{objectif.type}</p>
+        <h1 className='text-xl font-semibold text-gray-700 dark:text-gray-300'>{objectif.nom}</h1>
+        <p className='text-sm text-gray-500 dark:text-gray-100'>{objectif.type}</p>
       </div>
-      <p><span className='text-xs p-2 rounded bg-gray-200'>{objectif.date}</span></p>
+      <p><span className='text-xs p-2 rounded bg-gray-200 dark:bg-zinc-700 dark:text-gray-300'>{objectif.date}</span></p>
       <div className='w-full bg-gray-200 rounded-full h-2'>
         <div className='w-[40%] bg-indigo-500 rounded-full h-2'></div>
       </div>

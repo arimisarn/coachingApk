@@ -10,7 +10,7 @@ import Messages from './pages/clients/Messages';
 import Profil from './pages/Profil';
 import Coaching from './pages/clients/Coaching';
 import Progression from './pages/clients/Progression';
-import Layout from './Layout';
+import Layout from './layout/Layout';
 import Parametres from './pages/clients/Parametres';
 import './index.css';
 
