@@ -7,7 +7,7 @@ import Register from './pages/authentification/Register';
 import Login from './pages/authentification/Login';
 import Welcome from './pages/clients/Welcome';
 import Messages from './pages/clients/Messages';
-import Profil from './pages/Profil';
+import Profil from './pages/clients/Profil';
 import Coaching from './pages/clients/Coaching';
 import Progression from './pages/clients/Progression';
 import Layout from './layout/Layout';

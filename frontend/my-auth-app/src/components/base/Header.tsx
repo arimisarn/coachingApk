@@ -91,12 +91,12 @@ const Header: React.FC = () => {
       </div>
 
       {/* Barre de recherche */}
-      <div className="bg-stone-300 mb-4 relative rounded sm:flex hidden items-center px-2 py-1.5 text-sm">
+      <div className="bg-stone-300 dark:text-stone-50 dark:bg-stone-500 mb-4 relative rounded sm:flex hidden items-center px-2 py-1.5 text-sm">
         <FiSearch className="mr-2" />
         <input
           type="text"
           placeholder="Rechercher ..."
-          className="bg-transparent placeholder:text-stone-500 focus:outline-none"
+          className="bg-transparent dark:placeholder:text-stone-50 placeholder:text-stone-500 focus:outline-none"
         />
         <span className="p-1 text-xs flex gap-0.5 items-center shadow dark:bg-zinc-800 text-black dark:text-white bg-stone-50 rounded absolute right-1.5 top-1/2 -translate-y-1/2">
           <FiCommand />

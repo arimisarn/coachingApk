@@ -53,7 +53,7 @@ export const objectifs = [
     date: "2024-08-15",
     members: ["Alice", "Bob", "Charlie"],
     files: 4,
-    progression: 0,
+    progression: 79,
   },
   {
     nom: "Exercice de relaxation",
@@ -61,7 +61,7 @@ export const objectifs = [
     date: "2024-08-15",
     members: ["Alice", "Bob", "Charlie"],
     files: 4,
-    progression: 20,
+    progression: 27,
   },
   {
     nom: "Exercice de relaxation",
@@ -69,7 +69,7 @@ export const objectifs = [
     date: "2024-08-15",
     members: ["Alice", "Bob", "Charlie"],
     files: 4,
-    progression: 20,
+    progression: 67.0,
   },  
   {
     nom: "Exercice de relaxation",
@@ -77,6 +77,6 @@ export const objectifs = [
     date: "2024-08-15",
     members: ["Alice", "Bob", "Charlie"],
     files: 4,
-    progression: 20,
+    progression: 62,
   }, 
 ]
