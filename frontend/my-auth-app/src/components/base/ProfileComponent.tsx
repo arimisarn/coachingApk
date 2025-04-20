@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ProfileProps } from "../../props/ProfileProps";
+import { useState } from "react";
 
 
 const Profile: React.FC<ProfileProps> = ({
@@ -11,6 +12,10 @@ const Profile: React.FC<ProfileProps> = ({
   goals,
   progress,
 }) => {
+    const [isModificationOpen, setisModificationOpen] = useState(false); // État pour afficher/cacher le input de modification
+    const toggleModification= () => {
+      setisModificationOpen(!isModificationOpen);
+    };
   return (
     <div className="bg-white dark:bg-zinc-800 shadow-lg p-6 w-full transition-all duration-500">
       {/* Photo de l'utilisateur */}
@@ -54,6 +59,7 @@ const Profile: React.FC<ProfileProps> = ({
         </ul>
       </motion.div>
 
+
       {/* Progrès */}
       <motion.div
         initial={{ opacity: 0, x: 20 }}
@@ -71,7 +77,23 @@ const Profile: React.FC<ProfileProps> = ({
           </div>
         </div>
       </motion.div>
-
+         {/* Montrer les input de modification */}
+   <motion.div
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{
+                    opacity: isModificationOpen ? 1 : 0,
+                    y: isModificationOpen ? 0 : -50,
+                  }}
+                  exit={{
+                    opacity: 1,
+                    y: -50,
+                    transition: { duration: 0.3 },
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className={`mt-5 bg-white dark:bg-zinc-600 shadow-md p-4 rounded-md ${
+                    isModificationOpen ? "block" : "hidden"
+                  }`}
+                >hello</motion.div>
       {/* Boutons */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -79,9 +101,16 @@ const Profile: React.FC<ProfileProps> = ({
         transition={{ duration: 0.8 }}
         className="mt-6 flex space-x-4 justify-center"
       >
-        <button className="bg-indigo-500 text-white px-4 py-2 rounded shadow hover:bg-indigo-600 transition">
-          Modifier
+        <button 
+          onClick={toggleModification}
+          className="bg-indigo-500 text-white px-4 py-2 rounded shadow hover:bg-indigo-600 transition">
+             {isModificationOpen ? (
+                      "Fermer"
+                    ) : (
+                      "Modifier"
+                    )}
         </button>
+         
         <button className="border border-indigo-500 text-indigo-500 px-4 py-2 rounded shadow hover:bg-indigo-500 hover:text-white transition">
           Atteindre Objectifs
         </button>

@@ -67,8 +67,9 @@ const App = () => {
  🎯 Un accompagnement personnalisé selon vos besoins 📊 Des recommandations précises grâce à l’IA 🚀 Des résultats concrets, à votre rythme
  
     <div className="m-4">
-    	<button
-  className="rounded-full px-5 py-2 mt-6 text-lg font-semibold backdrop-blur-md
+    	<Link
+      to="/register"
+  className="rounded-full justify-center w-44 py-2 mt-6 text-lg font-semibold backdrop-blur-md
     bg-white/80 hover:bg-white/90 hover:shadow-blue-900/30 dark:bg-black/80 dark:hover:bg-black/90
     text-blue-600 border-blue-600/50 dark:text-blue-300 transition-all duration-300
     border dark:border-blue-700/50 hover:shadow-md
@@ -81,7 +82,7 @@ const App = () => {
   >
     →
   </span>
-</button>
+</Link>
 
     </div>
 </motion.p>
