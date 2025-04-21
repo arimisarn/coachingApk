@@ -132,7 +132,7 @@ function Login() {
             )}
           </button>
         </form>
-        <p className='mt-3 text-md font-[Arial]'>Vous avez déja un compte? </p>
+        <p className='mt-3 text-md font-[Arial] dark:text-white'>Vous avez déja un compte? </p>
         <Link to="/register" className='underline hover:text-md hover:font-semibold transition-all duration-500 text-blue-600'> S'inscrire maitenant</Link>
       </motion.div>
     </div>
