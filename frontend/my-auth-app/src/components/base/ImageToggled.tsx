@@ -15,7 +15,7 @@ const ImageToggled: React.FC<ImageToggledProps> = ({
   progress,
 }) => {
   return (
-    <div className="bg-white rounded-lg p-6 w-full">
+    <div className="bg-white dark:bg-gray-900 rounded-lg p-6 w-full">
 
       {/* Informations utilisateur */}
       <motion.div
@@ -24,8 +24,8 @@ const ImageToggled: React.FC<ImageToggledProps> = ({
         transition={{ duration: 0.5 }}
         className="text-center mt-4"
       >
-        <h1 className="text-lg font-bold text-indigo-600">{name}</h1>
-        <p className="text-sm text-gray-700 mt-2">{bio}</p>
+        <h1 className="text-lg font-bold dark:text-indigo-400 text-indigo-600">{name}</h1>
+        <p className="text-sm dark:text-gray-500  text-gray-700 mt-2">{bio}</p>
       </motion.div>
 
       {/* Objectifs */}
@@ -35,8 +35,8 @@ const ImageToggled: React.FC<ImageToggledProps> = ({
         transition={{ duration: 0.6 }}
         className="mt-6"
       >
-        <h5 className="text-indigo-600 font-semibold mb-2">Objectifs :</h5>
-        <ul className="space-y-2 text-gray-700 text-sm">
+        <h5 className="text-indigo-600 dark:text-indigo-400 font-semibold mb-2">Objectifs :</h5>
+        <ul className="space-y-2 text-gray-700 dark:text-gray-500 text-sm">
           {goals.map((goal, index) => (
             <li key={index}>✅ {goal}</li>
           ))}
@@ -50,8 +50,8 @@ const ImageToggled: React.FC<ImageToggledProps> = ({
         transition={{ duration: 0.7 }}
         className="mt-6"
       >
-        <h3 className="text-indigo-600 font-semibold mb-2">Progrès :</h3>
-        <div className="w-full bg-gray-200 rounded-full">
+        <h3 className="text-indigo-600 dark:text-indigo-400 font-semibold mb-2">Progrès :</h3>
+        <div className="w-full bg-gray-200 dark:bg-gray-300 rounded-full">
           <div
             className="bg-indigo-500 text-xs font-medium text-white text-center p-1 leading-none rounded-full"
             style={{ width: `${progress}%` }}

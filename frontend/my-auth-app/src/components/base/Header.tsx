@@ -1,6 +1,6 @@
 import { GoBell } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
-import pic from '../../assets/a.jpeg.jpg'
+import pic from '../../assets/avatar.jpg'
 import { FiSearch, FiCommand } from "react-icons/fi";
 import { BiCalendar } from "react-icons/bi";
 import { motion } from "framer-motion";
@@ -33,22 +33,6 @@ const Header: React.FC = () => {
       });
     }, [navigate]);
   
-    const handleLogout = async () => {
-      const token = localStorage.getItem('auth_token');
-  
-      try {
-        await axios.post('http://localhost:8000/auth/token/logout/', {}, {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        });
-  
-        localStorage.removeItem('auth_token');
-        navigate('/login');
-      } catch (error) {
-        console.error('Erreur lors de la déconnexion :', error);
-      }
-    };
   const [isNotificationOpen, setIsNotificationOpen] = useState(false); // État pour afficher/cacher les notifications
   const [isProfileOpen, setIsProfileOpen] = useState(false); // État pour afficher/cacher le contenu du profil
 
@@ -148,7 +132,7 @@ const Header: React.FC = () => {
             transition: { duration: 0.3 },
           }}
           transition={{ duration: 0.3 }}
-          className={`absolute right-10 mt-20 bg-white dark:bg-zinc-600 shadow-md p-4 rounded-md ${
+          className={`absolute right-10 mt-20  bg-white dark:bg-zinc-600 shadow-md p-4 rounded-md ${
             isNotificationOpen ? "block" : "hidden"
           }`}
         >
@@ -159,7 +143,7 @@ const Header: React.FC = () => {
         <motion.img
           onClick={toggleProfile}
           src={pic}
-          className="w-8 h-8 rounded-full border-2 border-zinc-500 dark:border-zinc-100 cursor-pointer "
+          className="w-8 h-8 rounded-full border-2 border-zinc-500 dark:bg-zinc-800 dark:border-zinc-100 cursor-pointer "
           alt="Profil utilisateur"
           whileHover={{ scale: 1.1 }}
         />
@@ -178,7 +162,7 @@ const Header: React.FC = () => {
           transition: { duration: 0.3 },
         }}
         transition={{ duration: 0.3 }}
-        className={`absolute right-0 top-16 bg-white shadow-md p-4 rounded-lg w-64 ${
+        className={`absolute right-0 top-16 bg-white dark:bg-gray-900 shadow-xl p-4 rounded-lg w-64 ${
           isProfileOpen ? "block" : "hidden"
         }`}
       >

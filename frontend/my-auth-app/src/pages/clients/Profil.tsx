@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Profile from "../../components/base/ProfileComponent";
 import axios from "axios";
-import profile from '../../assets/a.jpeg.jpg'
+import profile from '../../assets/avatar.jpg'
 
 const Profil: React.FC = () => {
   const [username, setUsername] = useState('');
