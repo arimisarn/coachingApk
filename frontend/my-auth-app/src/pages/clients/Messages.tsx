@@ -89,7 +89,7 @@ const Messages = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-[85vh] overflow-y-hidden pb-2 rounded shadow-md p-4 dark:bg-gray-800 dark:text-white bg-gray-100 text-black transition duration-300">
+    <div className="flex flex-col w-full h-[85vh] overflow-y-hidden pb-2 rounded shadow-md p-4 dark:bg-zinc-700 dark:text-white bg-gray-100 text-black transition duration-300">
       {/* Messages */}
       <div className="flex-1 flex flex-col overflow-y-auto mb-4">
         {messages.map((msg, index) => (
