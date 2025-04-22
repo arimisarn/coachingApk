@@ -69,12 +69,11 @@ export const CommandMenu = ({
       />
       <Command.List>
         <Command.Empty className='dark:text-white flex justify-center items-center p-12'>
-            Pas de résultat trouvé pour {" "}
+            Pas de résultat trouvé pour { ""}
             <span className='text-indigo-500 font-semibold'>"{value}"</span>
         </Command.Empty>
 
-        <Command.Group className='dark:text-white '>
-        <p className='text-indigo-300 font-bold flex items-center justify-center p-6'>Utilisateurs</p>
+        <Command.Group className='dark:text-white ' heading="Utilisateurs">
         <ul className="space-y-4">
         {filteredUsers.map(user => (
           <li
