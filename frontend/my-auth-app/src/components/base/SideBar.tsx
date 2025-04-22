@@ -8,8 +8,16 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { motion } from "framer-motion"
 
 const SideBar = () => {
+  const [isModificationOpen, setisModificationOpen] = useState(false); // État pour afficher/cacher le input de modification
+    const toggleModification= () => {
+      setisModificationOpen(!isModificationOpen);
+    };
+
+
+
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
@@ -71,6 +79,8 @@ const SideBar = () => {
     {id:1, name: "Se déconnecter", icon: FiLogOut},    
 ]
   return (
+    <>
+    
     <div className="w-16 md:w-56 fixed rounded-t-md left-0 top-4 bottom-4 z-10 h-screen border-r border-white dark:border-zinc-600 dark:bg-zinc-800 pt-8 px-4 bg-white">
       <div className="mb-8 pb-2 border-b dark:border-zinc-700 ">
        <div className="hidden md:flex md:justify-center md:items-center">
@@ -130,17 +140,50 @@ const SideBar = () => {
                 <li key={index} className="dark:hover:bg-zinc-700 font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500">
                     <button 
                         className=" flex items-center justify-center md:justify-start md:space-x-5"
-                        onClick={handleLogout}>
+                        onClick={toggleModification}>
                         
                         <span className="text-black dark:text-white">{link.icon()}</span>
                         <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
                     </button>
-                </li>
+               </li>
             )) 
         }
       </ul>
       </div>
+          {/* Montrer les input de modification */}
+          <motion.div
+                  initial={{ opacity: 0, y: -50 }}
+                  animate={{
+                    opacity: isModificationOpen ? 1 : 0,
+                    y: isModificationOpen ? 0 : -50,
+                  }}
+                  exit={{
+                    opacity: 1,
+                    y: -50,
+                    transition: { duration: 0.3 },
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className={`flex items-center justify-center flex-col fixed inset-y-60 inset-x-[450px]
+                     bg-stone-100 dark:text-white dark:bg-zinc-700 shadow-md rounded-md ${
+                    isModificationOpen ? "block" : "hidden"
+                  }`}
+                >
+                  <p className="dark:text-indigo-400 text-indigo-600 font-semibold mt-4">Déconnexion ?</p>
+                  <p className="my-3">Souhaitez-vous vraiment vous déconnecter ?</p>
+                  <div className="my-4">
+                    <button className="border px-7 py-1 mx-5 rounded-md text-white bg-zinc-500 border-zinc-500 ">
+                      Non
+                    </button>
+                    <button 
+                    className="border px-7 py-1 mx-5  rounded-md text-white bg-indigo-500 border-indigo-500 "
+                    onClick={handleLogout}>
+                      Oui
+                    </button>
+                  </div>
+                </motion.div>
     </div>
+  
+    </>
   )
 }
 
