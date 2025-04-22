@@ -46,7 +46,7 @@ export const CommandMenu = ({
       <Command.List>
         <Command.Empty className='dark:text-white'>
             Pas de résultat trouvé pour {" "}
-            <span className='text-indigo-500 font-semibold'>{value}</span>
+            <span className='text-indigo-500 font-semibold'>"{value}"</span>
         </Command.Empty>
 
         <Command.Group className='dark:text-white' heading="Letters">
