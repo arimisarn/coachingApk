@@ -10,6 +10,7 @@ import Messages from './pages/clients/Messages';
 import Profil from './pages/clients/Profil';
 import Coaching from './pages/clients/Coaching';
 import Progression from './pages/clients/Progression';
+import UsersList from './pages/clients/UsersList';
 import Layout from './layout/Layout';
 import Parametres from './pages/clients/Parametres';
 import './index.css';
@@ -30,6 +31,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="coaching" element={<Coaching />} />
           <Route path="progression" element={<Progression />} />
           <Route path="parametre" element={<Parametres />} />
+          <Route path="affichage" element={<UsersList />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
