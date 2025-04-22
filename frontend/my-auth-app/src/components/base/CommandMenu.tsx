@@ -39,9 +39,12 @@ export const CommandMenu = ({
         .then(res => setUsers(res.data))
         .catch(err => console.error(err));
     }, []);
-    const filteredUsers = users.filter(user =>
+    const filteredUsers = value
+    ? users.filter(user =>
         user.username.toLowerCase().includes(value.toLowerCase())
-      );
+      )
+    : [];
+      
 
   return (
     <Command.Dialog 
