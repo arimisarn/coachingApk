@@ -1,13 +1,13 @@
 import { GoBell } from "react-icons/go";
 import { IoCloseOutline } from "react-icons/io5";
 import pic from '../../assets/avatar.jpg'
-import { FiSearch, FiCommand } from "react-icons/fi";
 import { BiCalendar } from "react-icons/bi";
 import { motion } from "framer-motion";
 import ImageToggled from "./ImageToggled";
 import { DarkModeToggleDash } from "../ui/DarkModeToggleDash";
-import { useEffect, useState } from 'react';
+import React,{ useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Search from "./Search";
 import axios from 'axios';
 const Header: React.FC = () => {
    const [username, setUsername] = useState('');
@@ -75,29 +75,7 @@ const Header: React.FC = () => {
       </div>
 
       {/* Barre de recherche */}
-      <div className="bg-stone-300 dark:text-stone-50 dark:bg-stone-500 mb-4 relative rounded sm:flex hidden items-center px-2 py-1.5 text-sm">
-        <FiSearch className="mr-2" />
-        <input
-          type="text"
-          placeholder="Rechercher ..."
-          className="bg-transparent dark:placeholder:text-stone-50 placeholder:text-stone-500 focus:outline-none"
-        />
-        <span className="p-1 text-xs flex gap-0.5 items-center shadow dark:bg-zinc-800 text-black dark:text-white bg-stone-50 rounded absolute right-1.5 top-1/2 -translate-y-1/2">
-          <FiCommand />
-          K
-        </span>
-      </div>
-      <div className="flex sm:hidden items-center bg-stone-300 relative rounded px-1 mr-4 py-1 text-sm">
-        <div>
-          <FiSearch className="mr-2" />
-        </div>
-        <div>
-          <span className="p-1 text-xs flex gap-0.5 items-center shadow bg-stone-50 rounded right-1.5 mt-5 -translate-y-1/2">
-            <FiCommand />
-            K
-          </span>
-        </div>
-      </div>
+     <Search />
       {/* Bouton et notifications */}
       <div className="flex items-center space-x-5">
       <DarkModeToggleDash />

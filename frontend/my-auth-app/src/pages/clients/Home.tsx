@@ -27,24 +27,6 @@ const Home = () => {
         navigate('/login');
       });
     }, [navigate]);
-  
-    const handleLogout = async () => {
-      const token = localStorage.getItem('auth_token');
-  
-      try {
-        await axios.post('http://localhost:8000/auth/token/logout/', {}, {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        });
-  
-        localStorage.removeItem('auth_token');
-        navigate('/login');
-      } catch (error) {
-        console.error('Erreur lors de la déconnexion :', error);
-      }
-    };
-
   return (
     <>
     <div className="min-h-[100vh] flex dark:bg-zinc-800 bg-white">
