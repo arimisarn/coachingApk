@@ -11,9 +11,9 @@ import axios from 'axios';
 import { motion } from "framer-motion"
 
 const SideBar = () => {
-  const [isModificationOpen, setisModificationOpen] = useState(false); // État pour afficher/cacher le input de modification
-    const toggleModification= () => {
-      setisModificationOpen(!isModificationOpen);
+  const [isDeconnexionOpen, setisDeconnexionOpen] = useState(false); // État pour afficher/cacher le input de modification
+    const toggleDeconnexion= () => {
+      setisDeconnexionOpen(!isDeconnexionOpen);
     };
 
 
@@ -140,7 +140,7 @@ const SideBar = () => {
                 <li key={index} className="dark:hover:bg-zinc-700 font-medium rounded-md py-2 px-5 hover:bg-gray-100 hover:text-indigo-500">
                     <button 
                         className=" flex items-center justify-center md:justify-start md:space-x-5"
-                        onClick={toggleModification}>
+                        onClick={toggleDeconnexion}>
                         
                         <span className="text-black dark:text-white">{link.icon()}</span>
                         <span className="text-sm text-gray-500 hidden md:flex">{link.name}</span>
@@ -154,8 +154,8 @@ const SideBar = () => {
           <motion.div
                   initial={{ opacity: 0, y: -50 }}
                   animate={{
-                    opacity: isModificationOpen ? 1 : 0,
-                    y: isModificationOpen ? 0 : -50,
+                    opacity: isDeconnexionOpen ? 1 : 0,
+                    y: isDeconnexionOpen ? 0 : -50,
                   }}
                   exit={{
                     opacity: 1,
@@ -165,19 +165,21 @@ const SideBar = () => {
                   transition={{ duration: 0.3 }}
                   className={`flex items-center justify-center flex-col fixed inset-y-60 inset-x-[450px]
                      bg-stone-100 dark:text-white dark:bg-zinc-700 shadow-md rounded-md ${
-                    isModificationOpen ? "block" : "hidden"
+                    isDeconnexionOpen ? "block" : "hidden"
                   }`}
                 >
                   <p className="dark:text-indigo-400 text-indigo-600 font-semibold mt-4">Déconnexion ?</p>
                   <p className="my-3">Souhaitez-vous vraiment vous déconnecter ?</p>
                   <div className="my-4">
-                    <button className="border px-7 py-1 mx-5 rounded-md text-white bg-zinc-500 border-zinc-500 ">
+                    <button
+                   onClick={toggleDeconnexion}
+                    className="border px-7 py-1 mx-5 rounded-md text-white bg-zinc-500 border-zinc-500 ">
                       Non
                     </button>
                     <button 
                     className="border px-7 py-1 mx-5  rounded-md text-white bg-indigo-500 border-indigo-500 "
                     onClick={handleLogout}>
-                      Ouin
+                      Oui
                     </button>
                   </div>
                 </motion.div>
