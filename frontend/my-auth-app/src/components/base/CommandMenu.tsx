@@ -44,7 +44,10 @@ export const CommandMenu = ({
       placeholder:text-stone-400 focus:outline-none dark:bg-zinc-700 dark:border-stone-500'
       />
       <Command.List>
-        <Command.Empty className='dark:text-white'>No results found.</Command.Empty>
+        <Command.Empty className='dark:text-white'>
+            Pas de résultat trouvé pour {" "}
+            <span className='text-indigo-500'>{value}</span>
+        </Command.Empty>
 
         <Command.Group className='dark:text-white' heading="Letters">
           <Command.Item>a</Command.Item>
