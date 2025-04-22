@@ -73,7 +73,8 @@ export const CommandMenu = ({
             <span className='text-indigo-500 font-semibold'>"{value}"</span>
         </Command.Empty>
 
-        <Command.Group className='dark:text-white' heading="Letters">
+        <Command.Group className='dark:text-white '>
+        <p className='text-indigo-300 font-bold flex items-center justify-center p-6'>Utilisateurs</p>
         <ul className="space-y-4">
         {filteredUsers.map(user => (
           <li
