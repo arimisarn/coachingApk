@@ -177,7 +177,7 @@ const SideBar = () => {
                     <button 
                     className="border px-7 py-1 mx-5  rounded-md text-white bg-indigo-500 border-indigo-500 "
                     onClick={handleLogout}>
-                      Oui
+                      Ouin
                     </button>
                   </div>
                 </motion.div>
