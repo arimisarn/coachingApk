@@ -1,6 +1,14 @@
 import { Command } from 'cmdk'
-import React, { Dispatch, SetStateAction, useState } from 'react'
+import React, { Dispatch, SetStateAction, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
+interface User {
+    id: number;
+    username: string;
+    email: string;
+  }
+  
 export const CommandMenu = ({
     open, 
     setOpen,
@@ -22,6 +30,18 @@ export const CommandMenu = ({
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
   }, [])
+
+
+    const [users, setUsers] = useState<User[]>([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+      axios.get('http://localhost:8000/api/accounts/users/')
+        .then(res => setUsers(res.data))
+        .catch(err => console.error(err));
+    }, []);
+    const filteredUsers = users.filter(user =>
+        user.username.toLowerCase().includes(value.toLowerCase())
+      );
 
   return (
     <Command.Dialog 
@@ -50,10 +70,23 @@ export const CommandMenu = ({
         </Command.Empty>
 
         <Command.Group className='dark:text-white' heading="Letters">
-          <Command.Item>a</Command.Item>
+        <ul className="space-y-4">
+        {filteredUsers.map(user => (
+          <li
+            key={user.id}
+            onClick={() => navigate(`/users/${user.id}`)}
+            className="p-4 hover:bg-indigo-50 cursor-pointer"
+          >
+            <Command.Item>
+                {user.username}
+            </Command.Item>
+          </li>
+        ))}
+      </ul>
+          {/* <Command.Item>a</Command.Item>
           <Command.Item>b</Command.Item>
           <Command.Separator />
-          <Command.Item>c</Command.Item>
+          <Command.Item>c</Command.Item> */}
         </Command.Group>
 
         <Command.Item className='dark:text-white'>Apple</Command.Item>
