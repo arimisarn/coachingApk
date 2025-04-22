@@ -2,6 +2,7 @@ import { Command } from 'cmdk'
 import React, { Dispatch, SetStateAction, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import profile from '../../assets/avatar.jpg'
 
 interface User {
     id: number;
@@ -67,7 +68,7 @@ export const CommandMenu = ({
       placeholder:text-stone-400 focus:outline-none dark:bg-zinc-700 dark:border-stone-500'
       />
       <Command.List>
-        <Command.Empty className='dark:text-white'>
+        <Command.Empty className='dark:text-white flex justify-center items-center p-12'>
             Pas de résultat trouvé pour {" "}
             <span className='text-indigo-500 font-semibold'>"{value}"</span>
         </Command.Empty>
@@ -78,21 +79,18 @@ export const CommandMenu = ({
           <li
             key={user.id}
             onClick={() => navigate(`/users/${user.id}`)}
-            className="p-4 hover:bg-indigo-50 cursor-pointer"
+            className="p-4 hover:bg-zinc-600 transition-all duration-200 cursor-pointer flex items-center"
           >
+            <img className='w-7 h-7 mr-4 rounded-full' src={profile} alt="" />
             <Command.Item>
                 {user.username}
             </Command.Item>
           </li>
         ))}
       </ul>
-          {/* <Command.Item>a</Command.Item>
-          <Command.Item>b</Command.Item>
-          <Command.Separator />
-          <Command.Item>c</Command.Item> */}
         </Command.Group>
 
-        <Command.Item className='dark:text-white'>Apple</Command.Item>
+        <Command.Item className='dark:text-white'></Command.Item>
       </Command.List>
       </div>
     </Command.Dialog>
