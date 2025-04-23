@@ -172,14 +172,14 @@ const SideBar = () => {
                   <p className="my-3">Souhaitez-vous vraiment vous déconnecter ?</p>
                   <div className="my-4">
                     <button
-                   onClick={toggleDeconnexion}
+                   onClick={handleLogout}
                     className="border px-7 py-1 mx-5 rounded-md text-white bg-zinc-500 border-zinc-500 ">
-                      Non
+                      Oui
                     </button>
                     <button 
                     className="border px-7 py-1 mx-5  rounded-md text-white bg-indigo-500 border-indigo-500 "
-                    onClick={handleLogout}>
-                      Oui
+                    onClick={toggleDeconnexion}>
+                      Non
                     </button>
                   </div>
                 </motion.div>
