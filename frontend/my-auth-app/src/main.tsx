@@ -14,6 +14,7 @@ import UsersList from './pages/clients/UsersList';
 import UserProfile from './pages/clients/UserProfile';
 import Layout from './layout/Layout';
 import Parametres from './pages/clients/Parametres';
+import ProfileSetup from './pages/authentification/ProfileSetup';
 import './index.css';
 
 
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="parametre" element={<Parametres />} />
           <Route path="/users" element={<UsersList />} />
           <Route path="/users/:id" element={<UserProfile />} />
+          <Route path="/profile-setup" element={<ProfileSetup />} />
 
         </Route>
       </Routes>

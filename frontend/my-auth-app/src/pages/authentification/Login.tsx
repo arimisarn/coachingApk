@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { motion,AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { slidesLogin } from '../../constant';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function Login() {
   const [error, setError] = useState('');
   const [shake, setShake] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,8 +22,17 @@ function Login() {
     try {
       const response = await axios.post('http://localhost:8000/auth/token/login/', { username, password });
       localStorage.setItem('auth_token', response.data.auth_token);
-      navigate('/home');
+      // navigate('/home');  // Rediriger vers la page d'accueil
+
+      // Vérifie si c’est la première connexion (vérification de 'isFirstLogin' dans la réponse)
+      const isFirstLogin = response.data.isFirstLogin;
+      if (isFirstLogin) {
+        navigate('/profile-setup');  // Rediriger vers la configuration du profil
+      } else {
+        navigate('/home');  // Rediriger vers la page d'accueil
+      }
     } catch (error: any) {
+      console.error('Erreur détaillée de l\'API :', error.response);  // Log des erreurs
       if (error.response?.status === 400) {
         const detail = error.response?.data?.non_field_errors?.[0] || '';
         if (detail.includes('Invalid credentials')) {
@@ -38,13 +47,16 @@ function Login() {
       setTimeout(() => setShake(false), 500);
     }
   };
+  
+  
 
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setIndex((prev) => (prev + 1) % slidesLogin.length);
-      }, 5000);
-      return () => clearInterval(interval);
-    }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % slidesLogin.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="h-screen w-screen flex items-center justify-around transition-colors duration-500">
       {/* Background */}
@@ -54,31 +66,31 @@ function Login() {
         [background:radial-gradient(125%_125%_at_50%_10%,theme(colors.white)_40%,#63e_100%)]
         dark:[background:radial-gradient(125%_125%_at_50%_10%,theme(colors.black)_40%,#63e_100%)]"
       />
-        {/* Carousel */}
-             <div className="w-1/2 h-[400px] flex flex-wrap items-center justify-center">
-               <div className="relative w-[80%] h-full overflow-hidden">
-                 <AnimatePresence mode="wait">
-                   <motion.div
-                     key={slidesLogin[index].id}
-                     initial={{ opacity: 0, x: 100 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     exit={{ opacity: 0, x: -100 }}
-                     transition={{ duration: 0.6 }}
-                     className={`absolute inset-0 text-white text-2xl font-semibold ${slidesLogin[index].bg}`}
-                   >
-                     <div className='flex justify-center items-center '>
-                     <img src={slidesLogin[index].image} alt={slidesLogin[index].content} className="w-48 h-48 object-cover mt-16 mb-4 " />
-                     </div>
-                     <div className='flex justify-center items-center text-center'>
-                    <p className="text-xl text-black dark:text-white font-semibold">
-                     {slidesLogin[index].content}
-                     </p> 
-                     </div>
-                   </motion.div>
-                 </AnimatePresence>
-               </div>
-             </div>
-       
+      {/* Carousel */}
+      <div className="w-1/2 h-[400px] flex flex-wrap items-center justify-center">
+        <div className="relative w-[80%] h-full overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slidesLogin[index].id}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.6 }}
+              className={`absolute inset-0 text-white text-2xl font-semibold ${slidesLogin[index].bg}`}
+            >
+              <div className='flex justify-center items-center '>
+                <img src={slidesLogin[index].image} alt={slidesLogin[index].content} className="w-48 h-48 object-cover mt-16 mb-4 " />
+              </div>
+              <div className='flex justify-center items-center text-center'>
+                <p className="text-xl text-black dark:text-white font-semibold">
+                  {slidesLogin[index].content}
+                </p> 
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
       <motion.div
         className="bg-white rounded-lg shadow-lg p-8 max-w-sm w-full dark:bg-zinc-900"
         animate={shake ? { x: [-10, 10, -10, 10, 0] } : {}}
@@ -104,9 +116,9 @@ function Login() {
             required
           />
           <button 
-          type="submit" 
-          className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-2 rounded-md transition"
-          disabled={loading}
+            type="submit" 
+            className="w-full flex items-center justify-center bg-green-600 hover:bg-green-700 text-white py-2 rounded-md transition"
+            disabled={loading}
           >
             Se connecter
             {loading && (
@@ -132,12 +144,11 @@ function Login() {
             )}
           </button>
         </form>
-        <p className='mt-3 text-md font-[Arial] dark:text-white'>Vous avez déja un compte? </p>
-        <Link to="/register" className='underline hover:text-md hover:font-semibold transition-all duration-500 text-blue-600'> S'inscrire maitenant</Link>
+        <p className='mt-3 text-md font-[Arial] dark:text-white'>Vous avez déjà un compte ? </p>
+        <Link to="/register" className='underline hover:text-md hover:font-semibold transition-all duration-500 text-blue-600'> S'inscrire maintenant</Link>
       </motion.div>
     </div>
   );
 }
 
 export default Login;
-

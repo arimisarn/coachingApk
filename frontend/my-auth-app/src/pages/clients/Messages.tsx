@@ -47,7 +47,6 @@ const Messages = () => {
     });
   }, [navigate]);
 
-  // ✅ Scroll auto vers le bas
   useEffect(() => {
     endOfMessagesRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -66,10 +65,10 @@ const Messages = () => {
         prompt: input,
         stream: false
       }, {
-        timeout: 60000, // 60 secondes
+        timeout: 60000, 
       });
 
-      console.log("Réponse complète : ", response.data); // 🪵 pour debug
+      console.log("Réponse complète : ", response.data);
 
       const botResponse = response.data?.response?.trim();
 
