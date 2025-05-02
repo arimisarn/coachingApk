@@ -1,7 +1,4 @@
-import { LuUser } from "react-icons/lu"
 import { FiHome , FiLogOut, FiSettings} from "react-icons/fi"
-import { FaChartBar, FaUserTie } from "react-icons/fa"
-import { FaRobot } from "react-icons/fa"
 import logoPetit from "../../assets/logopetit.png"
 import logoGrand from "../../assets/logogrand.png"
 import { Link } from "react-router-dom"
@@ -9,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { motion } from "framer-motion"
+import { SIDEBAR_LINKS } from "../../constant";
 
 const SideBar = () => {
   const [isDeconnexionOpen, setisDeconnexionOpen] = useState(false); // État pour afficher/cacher le input de modification
@@ -63,14 +61,7 @@ const SideBar = () => {
           setActiveLink(index)
       }
 
-    const SIDEBAR_LINKS = [
-        {id:1, path: "/home" , name: "Accueil", icon: FiHome},
-        {id:2, path: "/profil", name: "Mon profil", icon: LuUser},
-        {id:3, path: "/coaching", name: "Coaching", icon: FaUserTie},
-        {id:4, path: "/progression", name: "Progression", icon: FaChartBar},
-        {id:5, path: "/messages", name: "Discuter avec l'IA", icon: FaRobot},
-
-    ]
+   
 
     const SIDEBAR_LINK = [
       {id:1, path: "/parametre" , name: "Paramètres", icon: FiSettings},
